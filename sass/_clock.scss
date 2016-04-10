@@ -1,32 +1,67 @@
-#viewport{
-	position:absolute;
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
-	overflow:hidden;
+#viewport
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow: hidden;
 }
 
-#clock{
-	height:300vh;
-	width:300vw;
-	position:relative;
-	left:-100vw;
-	top:-50vh;
+#clock
+{
+    position: relative;
+    top: -50vh;
+    left: -100vw;
 
-	section{
-		height: 50%;
-		width: 100%;
-		position:absolute;
+    width: 300vw;
+    height: 300vh;
+    section
+    {
+        position: relative;
 
+        width: 100%;
+        height: 50%;
+        span
+        {
+            position: absolute;
+            left: 50%;
 
-		&#day{
-			background-color:yellow;
-			top: 0;
-		}
-		&#night{
-			background-color:blue;
-			bottom:0;
-		}
-	}
+            width: $span-sizing;
+            height: $span-sizing;
+
+            transform: translate(-50%, 0%);
+
+            border-width: 10px;
+            border-style: solid;
+            border-radius: 50%;
+        }
+        &#day
+        {
+            top: 0;
+
+            background-color: #65C7E1;
+            span
+            {
+                bottom: $span-spacing;
+
+                border-color: #c89a24;
+                background-color: #eed419;
+            }
+        }
+        &#night
+        {
+            bottom: 0;
+
+            background-color: #313E70;
+            span
+            {
+                top: $span-spacing;
+
+                border-color: #939786;
+                background-color: #d4dabd;
+            }
+        }
+    }
 }

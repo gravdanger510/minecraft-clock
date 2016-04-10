@@ -15,8 +15,12 @@
 <body>
 	<div id="viewport">
 		<div id="clock" class="landscape">
-			<section id="day"></section>
-			<section id="night"></section>
+			<section id="day">
+				<span></span>
+			</section>
+			<section id="night">
+				<span></span>
+			</section>
 		</div>
 	</div>
 </body>
@@ -28,6 +32,7 @@
 	tick = function(){
 		//Here's where the magic happens
 		//Boston = 42, 71
+		
 		//Get the position of the sun
 		var currentPos = SunCalc.getPosition(new Date, long, latt),
 		//convert Altitude from Radians to Degrees

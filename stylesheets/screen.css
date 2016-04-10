@@ -71,33 +71,56 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #viewport {
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   overflow: hidden;
 }
 
-/* line 10, ../sass/_clock.scss */
+/* line 12, ../sass/_clock.scss */
 #clock {
-  height: 300vh;
-  width: 300vw;
   position: relative;
-  left: -100vw;
   top: -50vh;
+  left: -100vw;
+  width: 300vw;
+  height: 300vh;
 }
-/* line 17, ../sass/_clock.scss */
+/* line 20, ../sass/_clock.scss */
 #clock section {
-  height: 50%;
+  position: relative;
   width: 100%;
+  height: 50%;
+}
+/* line 26, ../sass/_clock.scss */
+#clock section span {
   position: absolute;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, 0%);
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 50%;
 }
-/* line 23, ../sass/_clock.scss */
+/* line 40, ../sass/_clock.scss */
 #clock section#day {
-  background-color: yellow;
   top: 0;
+  background-color: #65C7E1;
 }
-/* line 27, ../sass/_clock.scss */
+/* line 45, ../sass/_clock.scss */
+#clock section#day span {
+  bottom: 60vh;
+  border-color: #c89a24;
+  background-color: #eed419;
+}
+/* line 53, ../sass/_clock.scss */
 #clock section#night {
-  background-color: blue;
   bottom: 0;
+  background-color: #313E70;
+}
+/* line 58, ../sass/_clock.scss */
+#clock section#night span {
+  top: 60vh;
+  border-color: #939786;
+  background-color: #d4dabd;
 }
