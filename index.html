@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Minecraft Clock</title>
+
+  <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+  <script src="node_modules/suncalc/suncalc.js"></script>
+  </head>
+
+<body>
+	<div id="viewport">
+		<div id="clock" class="landscape">
+			<section id="day"></section>
+			<section id="night"></section>
+		</div>
+	</div>
+</body>
+<script>
+	var interval = 1000,
+	long = 42,
+	latt = 71,
+	clock = document.getElementById('clock'),
+	tick = function(){
+		//Here's where the magic happens
+		//Boston = 42, 71
+		//Get the position of the sun
+		var currentPos = SunCalc.getPosition(new Date, long, latt),
+		//convert Altitude from Radians to Degrees
+		//Offset by 90 so #clock is horizontal at 0
+		currentAltitude = (currentPos.altitude * 180 / Math.PI) - 90;
+		console.log(currentAltitude);
+		clock.setAttribute("style", "transform:rotate(" + currentAltitude+ "deg)");
+
+
+	}
+	tick();
+
+
+	window.setInterval(function(){
+		tick();
+	}, interval);	
+	
+
+
+</script>
+</html>

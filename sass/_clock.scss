@@ -1,0 +1,32 @@
+#viewport{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	overflow:hidden;
+}
+
+#clock{
+	height:300vh;
+	width:300vw;
+	position:relative;
+	left:-100vw;
+	top:-50vh;
+
+	section{
+		height: 50%;
+		width: 100%;
+		position:absolute;
+
+
+		&#day{
+			background-color:yellow;
+			top: 0;
+		}
+		&#night{
+			background-color:blue;
+			bottom:0;
+		}
+	}
+}
