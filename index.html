@@ -29,20 +29,23 @@
 	long = 42,
 	latt = 71,
 	clock = document.getElementById('clock'),
+	numSeconds = function(time){
+		return (time.getHours() * 3600) + (time.getMinutes() * 60) + time.getSeconds();
+	},
 	tick = function(){
 		//Here's where the magic happens
 		//Boston = 42, 71
 		
-		//Get the position of the sun
-		var currentPos = SunCalc.getPosition(new Date, long, latt),
-		//convert Altitude from Radians to Degrees
-		//Offset by 90 so #clock is horizontal at 0
-		currentAltitude = (currentPos.altitude * 180 / Math.PI) - 90;
-		console.log(currentAltitude);
-		clock.setAttribute("style", "transform:rotate(" + currentAltitude+ "deg)");
+		var nowSeconds = numSeconds(new Date());
+		sunSet = SunCalc.getTimes(new Date(), latt, long).sunset,
+		sunSetSeconds = numSeconds(sunSet),
+		r = ((180 * nowSeconds)/sunSetSeconds) - 90 ;
+		
+		console.log(r);
+		clock.setAttribute("style", "transform:rotate(" + r+ "deg)");
 
 
-	}
+	};
 	tick();
 
 
