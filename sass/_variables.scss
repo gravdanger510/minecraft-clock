@@ -1,2 +1,7 @@
 $span-spacing: 60vh;
 $span-sizing:200px;
+
+@mixin transition(){
+	transition: .3s all;
+	-webkit-transition: .3s all;
+}

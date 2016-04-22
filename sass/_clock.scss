@@ -1,5 +1,16 @@
+@font-face
+{
+    font-family: 'AvenirLTStd-Black';
+
+    src: url('Avenir/2B7ADE_0_0.eot');
+    src: url('Avenir/2B7ADE_0_0.eot?#iefix') format('embedded-opentype'),url('Avenir/2B7ADE_0_0.woff') format('woff'),url('Avenir/2B7ADE_0_0.ttf') format('truetype');
+}
 #viewport
 {
+    font-family: 'Avenir';
+    font-size: 15px;
+    font-weight: 300;
+
     position: absolute;
     top: 0;
     right: 0;
@@ -7,6 +18,31 @@
     left: 0;
 
     overflow: hidden;
+}
+#numbers
+{
+    font-weight: 700;
+    font-size:19em;
+    color:#FFF;
+
+    position: absolute;
+    z-index: 69;
+    top: 50%;
+    left: 55%;
+    pointer-events: none;
+    opacity: 0;
+
+    transform: translate(-50%, -50%);
+
+
+
+    @include transition();
+    &.show{
+        opacity: .1;
+    }
+    span{
+        font-size:.3em;
+    }
 }
 
 #clock
@@ -36,12 +72,13 @@
             border-width: 10px;
             border-style: solid;
             border-radius: 50%;
+            z-index: 6969;
         }
         &#day
         {
             top: 0;
 
-            background-color: #65C7E1;
+            background-color: #65c7e1;
             span
             {
                 bottom: $span-spacing;
@@ -54,7 +91,7 @@
         {
             bottom: 0;
 
-            background-color: #313E70;
+            background-color: #313e70;
             span
             {
                 top: $span-spacing;
