@@ -1,0 +1,94 @@
+i.fa
+{
+    font-size: 1.5em;
+
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+
+    width: 50px;
+    height: 20px;
+
+    cursor: pointer;
+    transform: translate( -50%, 0 );
+    text-align: center;
+
+    opacity: $ghostly;
+    color: #fff;
+
+    @include transition();
+    &:hover
+    {
+        opacity: 1;
+    }
+}
+#info
+{
+    position: absolute;
+    z-index: 69;
+    bottom: -220px;
+    left: 50%;
+
+    width: 90%;
+    max-width: $span-sizing;
+    padding: 50px;
+
+    transform: translate( -50%, 0 );
+
+    color: #fff;
+    background-color: $black;
+
+    @include transition();
+    hr,
+    h6
+    {
+        opacity: $ghostly;
+        font-style:italic;
+    }
+    &.open
+    {
+        bottom: 17px;
+    }
+}
+.toggle
+{
+    position: relative;
+
+    float: right;
+
+    width: $toggle-width;
+    height: $toggle-height;
+
+    cursor: pointer;
+
+    border: 1px solid #fff;
+    border-radius: 20px;
+    background-color: #1d1d1d;
+
+    @include transition();
+    &::after
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: $toggle-height;
+        height: $toggle-height;
+
+        content: '';
+
+        border-radius: 50%;
+        background-color: white;
+
+        @include transition();
+    }
+    &.on
+    {
+        border-color: $green;
+        background-color: $green;
+        &::after
+        {
+            left: $toggle-height;
+        }
+    }
+}

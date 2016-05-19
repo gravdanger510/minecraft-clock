@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Minecraft Clock</title>
+<title>Minecraft Clock</title>
 
-  <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-  <script src="node_modules/suncalc/suncalc.js"></script>
-  </head>
+<script src="node_modules/suncalc/suncalc.js"></script>
+
+</head>
 
 <body>
 	<div id="viewport">
@@ -22,8 +23,12 @@
 			</section>
 		</div>
 
-		<article id="info">
-			<p onclick="toggleTime()">Toggle the real Time</p>
+		<article id="info" class="open">
+
+			<h6>Settings</h6>
+			<p>Toggle the real Time<span id="time" class="toggle" onclick="toggleTime()"></span></p>
+			<hr>
+			<h6>About</h6>
 			<p>By <a href="http://tylerlmitchell.com" target="_blank">Tyler L Mitchell</a></p>
 			<p>Ft <a href="https://github.com/mourner/suncalc" target="_blank"> Suncalc</a></p>
 			<p><a href="https://github.com/gravdanger510/minecraft-clock" target="_blank">Fork Me!</a></p>
@@ -35,97 +40,5 @@
 
 
 
-<script>
-	var currentTime = new Date(),
-	numbersClock = document.getElementById("numbers");
-	interval = 1000,
-	long = 42,
-	latt = 71,
-	clock = document.getElementById('clock'),
-	numSeconds = function(time){
-		return (time.getHours() * 3600) + (time.getMinutes() * 60) + time.getSeconds();
-	},
-	tick = function(){
-		//Here's where the magic happens
-		//Boston = 42, 71
-		
-		var nowSeconds = numSeconds(new Date());
-		sunSet = SunCalc.getTimes(new Date(), latt, long).sunset,
-		sunSetSeconds = numSeconds(sunSet),
-		r = ((180 * nowSeconds)/sunSetSeconds) - 90 ;
-		
-		// console.log(r);
-		clock.setAttribute("style", "transform:rotate(" + r + "deg)");
-
-		//Real Clock Stuff
-		if (!(new Date().getMinutes()===currentTime.getMinutes() )) {
-			currentTime = new Date();
-			setTime();
-		}
-	},
-	setTime = function(){
-		var timeString = "",
-		isAm = "AM",
-		hours = currentTime.getHours(),
-		minutes = currentTime.getMinutes();
-
-		//check if AM or PM
-		if (hours > 11) {
-			isAm = "PM";
-		}
-		//Make sure we're not in military time
-		if (hours > 12) {
-			hours -= 12;
-		}
-		//Add Zero?
-		if (hours < 10) {
-			timeString += "0" + hours + ":";
-		}else{
-			timeString += hours + ":";
-		}
-
-		//MINUTES
-		if (minutes < 10) {
-			timeString += "0" + minutes + "<span>" + isAm + "</span>";
-		}else{
-			timeString += minutes + "<span>" + isAm + "</span>";
-		}
-
-
-		numbersClock.innerHTML = timeString;
-	},
-	toggleTime = function(){
-
-		if (numbersClock.classList.contains('show')) {
-				numbersClock.classList.remove("show");
-			}else{
-				numbersClock.classList.add("show");
-			}
-	}
-	icons = document.getElementsByClassName("fa"),
-	info = document.getElementById("info");
-
-	for(i = 0; i < icons.length; i++){
-
-		icons[i].addEventListener("click", function(){
-
-			if (info.classList.contains('open')) {
-				info.classList.remove("open");
-			}else{
-				info.classList.add("open");
-			}
-
-		});
-	}
-	setTime();
-	tick();
-
-
-	window.setInterval(function(){
-		tick();
-	}, interval);	
-	
-
-
-</script>
+<script src="mjsSecretStuff.js"></script>
 </html>

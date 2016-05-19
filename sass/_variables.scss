@@ -1,7 +1,18 @@
 $span-spacing: 60vh;
-$span-sizing:200px;
+$span-sizing: 200px;
 
-@mixin transition(){
-	transition: .3s all;
-	-webkit-transition: .3s all;
+@mixin transition()
+{
+    -webkit-transition: .3s all;
+            transition: .3s all;
+
+    -moz-webkit-transition: .3s all;
 }
+// TOGGLE STUFF
+$toggle-height: 15px;
+$toggle-width: $toggle-height * 2;
+$green: #74DE78;
+
+$ghostly: .3;
+$black: #1d1d1d;
+$line-height:1.4em;
